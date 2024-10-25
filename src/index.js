@@ -109,9 +109,8 @@ document.querySelector('.theme').onclick = () => {
     }
     calc.classList.remove('white');
     calc.classList.add('dark');
-    calcScreen.classList.remove('white');
-    calcScreen.classList.add('dark');
-    console.log(btn.className);
+    calcScreen.classList.remove('white-screen');
+    calcScreen.classList.add('dark-screen');
     theme.textContent = '🌙';
   } else if (theme.textContent === '🌙') {
     for (let i = 0; i < btn.length; i++) {
@@ -128,9 +127,8 @@ document.querySelector('.theme').onclick = () => {
     }
     calc.classList.remove('dark');
     calc.classList.add('white');
-    calcScreen.classList.remove('dark');
-    calcScreen.classList.add('white');
-    console.log(btn.className);
+    calcScreen.classList.remove('dark-screen');
+    calcScreen.classList.add('white-screen');
     theme.textContent = '🌞';
   }
 };
