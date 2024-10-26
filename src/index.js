@@ -18,6 +18,32 @@ function clearAll() {
   displaingResultOfCalculations.textContent = '';
 }
 
+function operatiorSelection(event) {
+  const sign = event.target.textContent;
+  operators = opereations.get(sign);
+  displaingResultOfCalculations.textContent += sign;
+}
+
+function calculation() {
+  stringValueOfFirstNumber = operators(
+    +stringValueOfFirstNumber,
+    +stringValueOfSecondNumber
+  );
+  displaingResultOfCalculations.textContent = stringValueOfFirstNumber;
+  operators = undefined;
+  stringValueOfSecondNumber = '';
+}
+
+function changesTheme() {
+  if (calculatorTheme.contains('dark-theme')) {
+    document.body.classList.remove('dark-theme');
+    document.body.classList.add('light-theme');
+  } else {
+    document.body.classList.remove('light-theme');
+    document.body.classList.add('dark-theme');
+  }
+}
+
 function sum(a, b) {
   return a + b;
 }
@@ -34,14 +60,12 @@ function percent(a, b) {
   return (a * b) / 100;
 }
 
-var opereations = new Map();
+let opereations = new Map();
 opereations.set('+', sum);
 opereations.set('*', myltiply);
 opereations.set('-', minus);
 opereations.set('/', divison);
 opereations.set('%', percent);
-
-document.querySelector('.ac').addEventListener('click', clearAll);
 
 document.querySelector('.buttons').addEventListener('click', function (event) {
   if (!event.target.classList.contains('btn')) return;
@@ -91,29 +115,11 @@ document.querySelector('.buttons').addEventListener('click', function (event) {
   );
 });
 document.querySelectorAll('.operation').forEach((e) => {
-  e.addEventListener('click', function (event) {
-    const sign = event.target.textContent;
-    operators = opereations.get(sign);
-    displaingResultOfCalculations.textContent += sign;
-  });
+  e.addEventListener('click', operatiorSelection);
 });
 
-document.querySelector('.equal').addEventListener('click', function () {
-  stringValueOfFirstNumber = operators(
-    +stringValueOfFirstNumber,
-    +stringValueOfSecondNumber
-  );
-  displaingResultOfCalculations.textContent = stringValueOfFirstNumber;
-  operators = undefined;
-  stringValueOfSecondNumber = '';
-});
+document.querySelector('.equal').addEventListener('click', calculation);
 
-document.querySelector('.theme').addEventListener('click', function () {
-  if (calculatorTheme.contains('dark-theme')) {
-    document.body.classList.remove('dark-theme');
-    document.body.classList.add('light-theme');
-  } else {
-    document.body.classList.remove('light-theme');
-    document.body.classList.add('dark-theme');
-  }
-});
+document.querySelector('.theme').addEventListener('click', changesTheme);
+
+document.querySelector('.ac').addEventListener('click', clearAll);
