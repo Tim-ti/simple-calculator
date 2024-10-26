@@ -1,55 +1,24 @@
-body {
-  display: grid;
-  justify-content: center;
-}
-
-.calc {
+.calculator {
   width: 300px;
   height: 500px;
-  background-color: black;
+  background-color: var(--background-color-calculator);
   border-radius: 4%;
-  color: #fff;
+  color: var(--text-color-black);
   padding: 18px;
 }
 
-.calc {
-  width: 300px;
-  height: 500px;
-  background-color: rgb(239, 239, 239);
-  border-radius: 4%;
-  color: #000000;
-  padding: 18px;
-}
-
-.white {
-  background-color: rgb(239, 239, 239);
-  color: #000000;
-}
-.white-screen {
-  background-color: rgb(205, 205, 205);
-  color: #000000;
-}
-
-.dark {
-  background-color: black;
-  color: #fff;
-}
-
-.dark-screen {
-  background-color: rgb(63, 63, 63);
-  color: #fff;
-}
-
-.calc-screen {
+.calculator-screen {
   height: 120px;
   padding: 10px;
   display: grid;
   justify-items: end;
   align-items: end;
   margin-bottom: 15px;
+  background-color: var(--background-color-calculator-screen);
+  color: var(--text-color-black);
 }
 
-.calc-screen p {
+.calculator-screen p {
   text-align: right;
   font-size: 4rem;
   margin: 0;
@@ -77,26 +46,32 @@ body {
   user-select: none;
 }
 
-.btn.bg-grey {
-  background-color: #6a6a6a;
+.dark-theme {
+  --background-color-buttons-white: #333;
+  --background-color-buttons-white-grey: #6a6a6a;
+  --background-color-buttons-green: #ff9500;
+  --background-color-calculator: black;
+  --background-color-calculator-screen: rgb(63, 63, 63);
+  --text-color-black: white;
 }
 
-.btn.bg-orange {
-  background-color: #ff9500;
-}
-
-.btn.bg-dark {
-  background-color: #333;
+.light-theme {
+  --background-color-buttons-white: #ffffff;
+  --background-color-buttons-white-grey: #d0d0d07f;
+  --background-color-buttons-green: #78e96d;
+  --background-color-calculator: rgb(239, 239, 239);
+  --background-color-calculator-screen: rgb(205, 205, 205);
+  --text-color-black: #000000;
 }
 
 .btn.bg-white {
-  background-color: #ffffff;
+  background-color: var(--background-color-buttons-white);
 }
 
 .btn.bg-white-grey {
-  background-color: #d0d0d07f;
+  background-color: var(--background-color-buttons-white-grey);
 }
 
 .btn.bg-green {
-  background-color: #78e96d;
+  background-color: var(--background-color-buttons-green);
 }
