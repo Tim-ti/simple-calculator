@@ -1,5 +1,6 @@
 import { trimLeadingZeroes } from './utils.js';
 import { sum, minus, divison, myltiply, percent } from './calculator.js';
+import '../style/style.css';
 
 const DARK_THEME_CLASS = 'dark-theme';
 const LIGHT_THEME_CLASS = 'light-theme';
@@ -28,9 +29,6 @@ function negateSign() {
   } else if (secondNumberInput != '' && operator != '') {
     secondNumberInput = +secondNumberInput * -1;
     resultOutputElement.textContent = secondNumberInput;
-  } else {
-    firstNumberInput = '-';
-    resultOutputElement.textContent = firstNumberInput;
   }
 }
 
@@ -87,7 +85,7 @@ document.querySelectorAll('.digit').forEach((e) => {
     }
 
     resultOutputElement.textContent = trimLeadingZeroes(
-      resultOutputElement.textContent
+      resultOutputElement.textContent,
     );
   });
 });
