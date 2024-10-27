@@ -1,32 +1,22 @@
-import globals from 'globals';
-import pluginJs from '@eslint/js';
-
 export default [
-  { languageOptions: { globals: globals.browser } },
-  pluginJs.configs.recommended,
   {
-    ignores: ['*.config.*', 'dist/*'],
+    ignores: ['node_modules', 'dist'],
   },
   {
-    env: {
-      browser: true,
-      es2021: true,
-    },
-
-    extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
-    parser: 'babel-eslint',
-    parserOptions: {
-      ecmaFeatures: {
-        jsx: true,
-      },
-      ecmaVersion: 11,
+    languageOptions: {
+      ecmaVersion: 2021,
       sourceType: 'module',
     },
-
-    plugins: ['react', 'prettier'],
-
+    linterOptions: {
+      reportUnusedDisableDirectives: true,
+    },
     rules: {
-      'prettier/prettier': 'error',
+      indent: ['error', 2],
+      quotes: ['error', 'single'],
+      semi: ['error', 'always'],
+      'no-unused-vars': ['warn'],
+      'no-console': 'off',
+      eqeqeq: ['error', 'always'],
     },
   },
 ];

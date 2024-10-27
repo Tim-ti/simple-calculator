@@ -55,6 +55,13 @@
   --text-color-black: white;
 }
 
+.dark-theme .light-theme-toggle {
+  display: none;
+}
+.light-theme .dark-theme-toggle {
+  display: none;
+}
+
 .light-theme {
   --background-color-buttons-white: #ffffff;
   --background-color-buttons-white-grey: #d0d0d07f;

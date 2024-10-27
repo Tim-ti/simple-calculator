@@ -13,3 +13,6 @@ export function minus(a, b) {
 export function percent(a, b) {
   return (a * b) / 100;
 }
+export function negate(a) {
+  return a * -1;
+}

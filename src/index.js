@@ -1,9 +1,17 @@
 import { trimLeadingZeroes } from './utils.js';
-import { sum, minus, divison, myltiply, percent } from './calculator.js';
-import '../style/style.css';
+import {
+  sum,
+  minus,
+  divison,
+  myltiply,
+  percent,
+  negate,
+} from './calculator.js';
+import '../styles/style.css';
 
 const DARK_THEME_CLASS = 'dark-theme';
 const LIGHT_THEME_CLASS = 'light-theme';
+
 let firstNumberInput = '';
 let secondNumberInput = '';
 const resultOutputElement = document.querySelector('.calculator-screen p');
@@ -23,26 +31,26 @@ function clearAll() {
 }
 
 function negateSign() {
-  if (firstNumberInput != '' && operator === '') {
-    firstNumberInput = +firstNumberInput * -1;
+  if (firstNumberInput !== '' && operator === '') {
+    firstNumberInput = negate(+firstNumberInput);
     resultOutputElement.textContent = firstNumberInput;
-  } else if (secondNumberInput != '' && operator != '') {
-    secondNumberInput = +secondNumberInput * -1;
+  } else if (secondNumberInput !== '' && operator !== '') {
+    secondNumberInput = negate(+secondNumberInput);
     resultOutputElement.textContent = secondNumberInput;
   }
 }
 
-function dotSign() {
+function makeFloat() {
   if (
-    firstNumberInput != '' &&
+    firstNumberInput !== '' &&
     operator === '' &&
     !firstNumberInput.includes('.')
   ) {
     firstNumberInput += '.';
     resultOutputElement.textContent = firstNumberInput;
   } else if (
-    secondNumberInput != '' &&
-    operator != '' &&
+    secondNumberInput !== '' &&
+    operator !== '' &&
     !secondNumberInput.includes('.')
   ) {
     secondNumberInput += '.';
@@ -70,7 +78,7 @@ function changeTheme() {
       : DARK_THEME_CLASS;
 }
 
-function displeyNumber(number) {
+function displayNumber(number) {
   if (operator) {
     secondNumberInput += number;
     resultOutputElement.textContent = secondNumberInput;
@@ -85,7 +93,7 @@ function displeyNumber(number) {
 
 function addDigit(event) {
   const presstKey = event.target.textContent;
-  displeyNumber(presstKey);
+  displayNumber(presstKey);
 }
 
 document.querySelectorAll('.digit').forEach((e) => {
@@ -100,9 +108,15 @@ document.querySelector('.plus-minus').addEventListener('click', negateSign);
 
 document.querySelector('.equal').addEventListener('click', calculate);
 
-document.querySelector('.dot').addEventListener('click', dotSign);
+document.querySelector('.dot').addEventListener('click', makeFloat);
 
-document.querySelector('.theme').addEventListener('click', changeTheme);
+document
+  .querySelector('.light-theme-toggle')
+  .addEventListener('click', changeTheme);
+
+document
+  .querySelector('.dark-theme-toggle')
+  .addEventListener('click', changeTheme);
 
 document.querySelector('.ac').addEventListener('click', clearAll);
 
