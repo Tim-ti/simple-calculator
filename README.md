@@ -13,3 +13,5 @@ The main task is to initialize a basic JS application (Calculator) without using
 2.2 for prod build: run npm run build
 
 2.3 For deploy build: run npm run deploy
+
+https://tim-ti.github.io/simple-calculator/
