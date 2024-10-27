@@ -32,6 +32,24 @@ function negateSign() {
   }
 }
 
+function dotSign() {
+  if (
+    firstNumberInput != '' &&
+    operator === '' &&
+    !firstNumberInput.includes('.')
+  ) {
+    firstNumberInput += '.';
+    resultOutputElement.textContent = firstNumberInput;
+  } else if (
+    secondNumberInput != '' &&
+    operator != '' &&
+    !secondNumberInput.includes('.')
+  ) {
+    secondNumberInput += '.';
+    resultOutputElement.textContent = secondNumberInput;
+  }
+}
+
 function selectOperator(event) {
   const sign = event.target.textContent;
   operator = opereations.get(sign);
@@ -52,42 +70,24 @@ function changeTheme() {
       : DARK_THEME_CLASS;
 }
 
+function addDigit(event) {
+  const presstKey = event.target.textContent;
+
+  if (operator) {
+    secondNumberInput += presstKey;
+    resultOutputElement.textContent = secondNumberInput;
+  } else {
+    firstNumberInput += presstKey;
+    resultOutputElement.textContent = firstNumberInput;
+  }
+
+  resultOutputElement.textContent = trimLeadingZeroes(
+    resultOutputElement.textContent,
+  );
+}
+
 document.querySelectorAll('.digit').forEach((e) => {
-  e.addEventListener('click', function (event) {
-    const presstKey = event.target.textContent;
-
-    if (operator) {
-      if (presstKey === '.' && !resultOutputElement.textContent.includes('.')) {
-        secondNumberInput += presstKey;
-        resultOutputElement.textContent = secondNumberInput;
-      } else if (
-        presstKey === '.' &&
-        resultOutputElement.textContent.includes('.')
-      ) {
-        resultOutputElement.textContent += '';
-      } else {
-        secondNumberInput += presstKey;
-        resultOutputElement.textContent = secondNumberInput;
-      }
-    } else {
-      if (presstKey === '.' && !resultOutputElement.textContent.includes('.')) {
-        firstNumberInput += presstKey;
-        resultOutputElement.textContent = firstNumberInput;
-      } else if (
-        presstKey === '.' &&
-        resultOutputElement.textContent.includes('.')
-      ) {
-        resultOutputElement.textContent += '';
-      } else {
-        firstNumberInput += presstKey;
-        resultOutputElement.textContent = firstNumberInput;
-      }
-    }
-
-    resultOutputElement.textContent = trimLeadingZeroes(
-      resultOutputElement.textContent,
-    );
-  });
+  e.addEventListener('click', addDigit);
 });
 
 document.querySelectorAll('.operation').forEach((e) => {
@@ -97,6 +97,8 @@ document.querySelectorAll('.operation').forEach((e) => {
 document.querySelector('.plus-minus').addEventListener('click', negateSign);
 
 document.querySelector('.equal').addEventListener('click', calculate);
+
+document.querySelector('.dot').addEventListener('click', dotSign);
 
 document.querySelector('.theme').addEventListener('click', changeTheme);
 
