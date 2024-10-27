@@ -70,20 +70,22 @@ function changeTheme() {
       : DARK_THEME_CLASS;
 }
 
-function addDigit(event) {
-  const presstKey = event.target.textContent;
-
+function displeyNumber(number) {
   if (operator) {
-    secondNumberInput += presstKey;
+    secondNumberInput += number;
     resultOutputElement.textContent = secondNumberInput;
   } else {
-    firstNumberInput += presstKey;
+    firstNumberInput += number;
     resultOutputElement.textContent = firstNumberInput;
   }
-
   resultOutputElement.textContent = trimLeadingZeroes(
     resultOutputElement.textContent,
   );
+}
+
+function addDigit(event) {
+  const presstKey = event.target.textContent;
+  displeyNumber(presstKey);
 }
 
 document.querySelectorAll('.digit').forEach((e) => {
