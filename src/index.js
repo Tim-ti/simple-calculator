@@ -49,7 +49,7 @@ function selectOperator(event) {
   }
   const sign = event.target.textContent;
   operator = opereations.get(sign);
-  resultOutputElement.textContent += sign;
+  resultOutputElement.textContent = firstNumberInput + sign;
 }
 
 function calculate() {
