@@ -5,8 +5,8 @@
   "scripts": {
     "build": "npm run lint & webpack --config webpack-prod.config.js",
     "watch": "webpack --watch",
-    "deploy": "gh-pages -d dist",
-    "dev": "webpack serve --open --config webpack-dev.config.js",
+    "deploy": "npm run lint & gh-pages -d dist",
+    "dev": "npm run lint & webpack serve --open --config webpack-dev.config.js",
     "lint": "eslint ./src"
   },
   "author": "",
