@@ -11,3 +11,8 @@
 + For prod build: `npm run build`
 + For deploy build: `npm run deploy`
 
+## Application structure 
+
++ In the styles folder there is `style.css` which is responsible for all styles of the application.
++ The src folder contains the main scripts `index.js`, `utils.js` and `calculator.js`, which contains the main math functions.
++ `webpack-dev.config.js` and `webpack-prod.config.js` contain instructions for building the project in development mode and for the final build of the application.
