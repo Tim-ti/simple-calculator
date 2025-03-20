@@ -10,6 +10,9 @@ let secondNumberInput = '';
 const resultOutputElement = document.querySelector('.calculator-screen p');
 let operator = '';
 let opereations = new Map();
+
+resultOutputElement.textContent = '0';
+
 opereations.set('+', sum);
 opereations.set('*', myltiply);
 opereations.set('-', minus);
